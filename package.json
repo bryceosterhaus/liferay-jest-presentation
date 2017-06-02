@@ -1,6 +1,6 @@
 {
-  "name": "liferay-jest",
-  "version": "1.0.1",
+  "name": "liferay-jest-presentation",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf dist",
