@@ -1,0 +1,23 @@
+test('should render', () => {
+	const component = new ListItem();
+
+	expect(component.element.outerHTML).toMatchSnapshot();
+});
+
+
+
+
+test('should render', () => {
+	const component = new ListItem();
+
+	expect(component).toMatchSnapshot();
+});
+
+
+
+
+test('should render with props', () => {
+	const component = new ListItem({item: 'foo'});
+
+	expect(component).toMatchSnapshot();
+});

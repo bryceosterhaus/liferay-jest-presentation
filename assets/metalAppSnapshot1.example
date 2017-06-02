@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem should render 1`] = `"<li></li>"`;
+
+exports[`ListItem should render 2`] = `<li></li>`;
+
+exports[`ListItem should render with props 1`] = `<li>foo</li>`;

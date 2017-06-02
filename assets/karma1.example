@@ -1,0 +1,24 @@
+describe(
+  'liferay-loop-file-uploader:',
+  function() {
+    before(
+      function(done) {
+        A.use(
+          'liferay-loop-file-uploader',
+          function() {
+            done();
+          }
+        );
+      }
+    );
+
+    it(
+      'should initialize component',
+      function() {
+        var FileUploader = new Liferay.Loop.FileUploader();
+
+        assert(FileUploader.get('initialized'));
+      }
+    );
+  }
+);

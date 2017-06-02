@@ -1,0 +1,104 @@
+var path = require('path');
+
+var testsDir = __dirname + '/docroot/js/tests';
+
+var karmaConfig = {
+  autoWatch: true,
+  browsers: ['PhantomJS'],
+  colors: true,
+  files: [
+    testsDir + '/mocks/base.js'
+  ],
+  frameworks: ['chai', 'mocha', 'sinon'],
+  logLevel: 'info',
+  port: 9876,
+  preprocessors: {},
+
+  // Non-vital RESTful requests should be added to proxies, this will ensure an empty object is returned.
+
+  proxies: {
+    '/-/loop/feed/viewMyOldFeed.json': '/base/docroot/js/tests/src/assets/empty-response.json',
+    '/-/loop/people/view.json': '/base/docroot/js/tests/src/assets/empty-response.json',
+    '/-/loop/people/viewManagers.json': '/base/docroot/js/tests/src/assets/empty-response.json',
+    '/-/loop/people/viewSubordinates.json': '/base/docroot/js/tests/src/assets/empty-response.json',
+    '/poller/receive': '/base/docroot/js/tests/src/assets/empty-response.json'
+  },
+  replacerPreprocessor: {
+    replacer: require(testsDir + '/util/configReplacer.js')
+  },
+  reporters: ['notify', 'progress']
+};
+
+karmaConfig.preprocessors[testsDir + '/mocks/base.js'] = ['replacer'];
+
+var userConfig = require(testsDir + '/util/user-config.json');
+
+var jsPath = path.join(userConfig.deployDir, 'html/js');
+var propertiesPath = path.join(userConfig.source, 'portal-impl/src/portal.properties');
+
+require(testsDir + '/util/properties.js').read(
+  propertiesPath,
+  function(data) {
+    var props = data[0];
+
+    var bareboneFiles = props['javascript.barebone.files'].split(',');
+
+    bareboneFiles.forEach(
+      function(file) {
+        karmaConfig.files.push(
+          {
+            included: true,
+            pattern: jsPath + '/' + file,
+            served: true,
+            watched: false
+          }
+        );
+      }
+    );
+
+    karmaConfig.files = karmaConfig.files.concat(
+      [
+        testsDir + '/mocks/language.js',
+
+        testsDir + '/src/assets/empty-response.json',
+
+        {
+          included: false,
+          pattern: jsPath + '/aui/**/*.css',
+          served: true,
+          watched: false
+        },
+
+        {
+          included: false,
+          pattern: jsPath + '/aui/**/*.js',
+          served: true,
+          watched: false
+        },
+
+        {
+          included: false,
+          pattern: jsPath + '/liferay/*.js',
+          served: true,
+          watched: false
+        },
+
+        {
+          included: true,
+          pattern: testsDir + '/../*.js',
+          served: true
+        },
+
+        {
+          included: true,
+          pattern: testsDir + '/src/**/*.js',
+          served: true
+        }
+      ]
+    );
+
+    module.exports = function(config) {
+      config.set(karmaConfig);
+    };
+  }
+);

@@ -1,0 +1,11 @@
+import moduleIAmTesting from '../moduleIAmTesting'
+
+describe('some test suite', () => {
+	test('some specific test', () => {
+		expect().toBe()
+		expect().not.toEqual()
+		expect().toBeNull()
+		expect().toBeTruthy()
+		//...
+	});
+});

@@ -1,0 +1,35 @@
+test('should render without any state', () => {
+	const component = new App();
+
+	expect(component).toMatchSnapshot();
+});
+
+
+
+
+test('should render with state', () => {
+	const component = new App();
+
+	component.state.items = ['one', 'two', 'three'];
+
+	jest.runAllTimers();
+
+	expect(component).toMatchSnapshot();
+});
+
+
+
+
+test('should add inputValue to items', () => {
+	const component = new App();
+
+	component.state.inputValue = 'hello world';
+
+	jest.runAllTimers();
+
+	component.handleInputSubmit();
+
+	jest.runAllTimers();
+
+	expect(component).toMatchSnapshot();
+});

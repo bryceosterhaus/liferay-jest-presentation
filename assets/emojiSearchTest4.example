@@ -1,0 +1,10 @@
+test('return emojis with hands', () => {
+  const val = emojiSearch('hands');
+
+  expect(val).toEqual(
+    [
+      {descriptors: 'raise the roof hands', emoji: '🙌'},
+      {descriptors: 'clapping hands', emoji: '👏'}
+    ]
+  );
+});

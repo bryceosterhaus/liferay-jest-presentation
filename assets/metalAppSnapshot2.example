@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should add inputValue to items 1`] = `
+<div>
+  <input key="_metal_jsx_1" value="">
+  <input placeholder="Add an item..." type="button" key="_metal_jsx_2">
+  <ul key="_metal_jsx_3">
+    <li key="hello world">hello world</li>
+  </ul>
+</div>
+`;
+
+exports[`App should render with state 1`] = `
+<div>
+  <input key="_metal_jsx_1">
+  <input placeholder="Add an item..." type="button" key="_metal_jsx_2">
+  <ul key="_metal_jsx_3">
+    <li key="one">one</li>
+    <li key="two">two</li>
+    <li key="three">three</li>
+  </ul>
+</div>
+`;
+
+exports[`App should render without any state 1`] = `
+<div>
+  <input key="_metal_jsx_1">
+  <input placeholder="Add an item..." type="button" key="_metal_jsx_2">
+  <ul key="_metal_jsx_3"></ul>
+</div>
+`;

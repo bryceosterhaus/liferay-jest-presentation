@@ -1,0 +1,3 @@
+function getIconElement() {
+	return '<div class="icon-container"></div>';
+}

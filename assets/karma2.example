@@ -1,0 +1,31 @@
+it(
+  'should render',
+  function() {
+    var srcNode = A.Node.create('<div></div>');
+
+    A.getBody().append(srcNode);
+
+    srcNode.html(
+      '<div class="tabs">' +
+        '<ul>' +
+          '<li class="tab active" data-tab="tabOne"></li>' +
+          '<li class="tab" data-tab="tabTwo"></li>' +
+          '<li class="tab" data-tab="tabThree"></li>' +
+        '</ul>' +
+      '</div>' +
+      '<div class="tab-content-container">' +
+        '<div class="tab-content" data-tab="tabOne"></div>' +
+        '<div class="tab-content hide" data-tab="tabTwo"></div>' +
+        '<div class="tab-content hide" data-tab="tabThree"></div>' +
+      '</div>'
+    );
+
+    tabs = new Liferay.Loop.Tabs(
+      {
+        srcNode: srcNode
+      }
+    ).render();
+
+    assert(tabs.get('rendered'));
+  }
+);

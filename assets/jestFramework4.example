@@ -1,0 +1,23 @@
+// square.js
+import isNumber from './isNumber';
+
+function square(a) {
+	if (!isNumber(a)) {
+		return;
+	}
+
+	return a * a;
+}
+
+
+// test.js
+jest.mock('./isNumber');
+
+import square from './square';
+import isNumber from './isNumber';
+
+isNumber.mockImplementation(() => true)
+
+test('should square a number', () => {
+	expect(square(2)).toBe(4);
+});

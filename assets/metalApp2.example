@@ -1,0 +1,7 @@
+class ListItem extends Component {
+  render() {
+    return (
+      <li>{this.props.item}</li>
+    );
+  }
+}

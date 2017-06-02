@@ -1,0 +1,46 @@
+import Component, {Config} from 'metal-jsx';
+
+import List from './List';
+
+class App extends Component {
+  handleInputChange({target}) {
+    this.state.inputValue = target.value;
+  }
+
+  handleInputSubmit() {
+    this.setState(
+      {
+        inputValue: '',
+        items: [
+          ...this.state.items,
+          this.state.inputValue
+        ]
+      }
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <input
+          onChange={this.handleInputChange}
+          placeholder="Add an item..."
+          value={this.state.inputValue}
+        />
+
+        <button onClick={this.handleInputSubmit}>
+          Submit
+        </button>
+
+        <List items={this.state.items} />
+      </div>
+    );
+  }
+}
+
+App.STATE = {
+  inputValue: Config.string(),
+  items: Config.array().value([])
+};
+
+export default App;

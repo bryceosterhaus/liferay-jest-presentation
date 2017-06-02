@@ -1,0 +1,29 @@
+it('works with promises', () => {
+  return user.getName().then(
+    name => expect(name).toEqual('Bryce')
+  );
+});
+
+
+it('works with callback', (done) => {
+  setTimeout(
+    () => {
+      expect(true).toEqual(true)
+      done();
+    },
+    1000
+  );
+});
+
+
+it('works by using fake timers', (done) => {
+  const myComponent = new MyComponent();
+
+  myCompnent.state.foo = 'bar'; // async action
+
+  expect(myComponent.state.foo).not.toEqual('bar');
+
+  jest.runAllTimers(); // timers === "fake"
+
+  expect(myComponent.state.foo).toEqual('bar');
+});

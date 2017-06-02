@@ -1,0 +1,11 @@
+const mockFn = jest.fn();
+
+mockFn();
+
+expect(mockFn).toHaveBeenCalled();
+
+
+
+const mockFnReturn = jest.fn(() => 'Some Value');
+
+expect(mockFnReturn()).toEqual('Some Value');

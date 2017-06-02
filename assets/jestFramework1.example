@@ -1,0 +1,8 @@
+// test.js
+import someModule from '../someModule'
+
+describe('some test suite', () => {
+  test('some specific test', () => {
+    // Assertions go here
+  });
+});

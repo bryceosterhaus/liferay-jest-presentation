@@ -1,0 +1,3 @@
+it('should add two numbers', function() {
+	assert.ok(sum(1, 3) === 4); // This fails
+});
